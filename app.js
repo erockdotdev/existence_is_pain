@@ -5,7 +5,7 @@ $( document ).ready(function() {
 
 
 //////Random Movement////////////////////////////////////////////////////
-
+//this was used from the animate lab we did with joe
 function makeNewPos(){
   let h = $('#gameboard').height() - 70;
   let w = $('#gameboard').width() - 50;
@@ -38,7 +38,7 @@ let scoreCounter = $('#scorecounter');
 
 
 $('.block').on('click', function(){
-	scoreValue += 5
+	scoreValue += 500;
 	// alert('Your score is ' + scoreValue);
 
 scoreCounter.html(scoreValue);
@@ -52,30 +52,44 @@ scoreCounter.html(scoreValue);
 
 //////Timer////////////////////////////////////////////////////
 
-let startTime = 5;
+let startTime = 8;
 let timeCounter = $('#timecounter');
 
 timeCounter.html(startTime);
 
 function countDown(){
-	setInterval(function(){
+	let time = setInterval(function(){
 	timeCounter.html(startTime)	
-		startTime -= 1;}, 1000);
-	if(startTime === 0){
-	// clearInterval();
-	startTime = '0'; 
-}
+		startTime -= 1;
+	if (startTime === -1){
+		clearInterval(time);
+		alert(scoreValue)
+	}
+	}, 1000);
 	} 
 countDown();
+
+
+
+
+
+// clear timer and then call a function
+
+
+
+
+
+
+
+
+
 
 // if(startTime === 0){
 // 	// clearInterval();
 // 	startTime = 0; 
 // }
 
-
-
-
+ 
 
 
 
