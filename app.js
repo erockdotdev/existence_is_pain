@@ -8,7 +8,7 @@ $( document ).ready(function() {
 
 function makeNewPos(){
   let h = $('#gameboard').height() - 70;
-  let w = $('#gameboard').width() -50;
+  let w = $('#gameboard').width() - 50;
   let nh = h * Math.random();
   let nw = w * Math.random();
   return [nw,nh]
@@ -34,7 +34,7 @@ animateDiv();
 
 //////Score////////////////////////////////////////////////////
 let scoreValue = 0;
-	let scoreCounter = $('#scorecounter');
+let scoreCounter = $('#scorecounter');
 
 
 $('.block').on('click', function(){
@@ -47,13 +47,31 @@ scoreCounter.html(scoreValue);
 scoreCounter.html(scoreValue);
 
 
+////////End Score//////////////////////////////////////////////
 
 
-//////////////////////////////////////////////////////////////
+//////Timer////////////////////////////////////////////////////
 
+let startTime = 5;
+let timeCounter = $('#timecounter');
 
+timeCounter.html(startTime);
 
+function countDown(){
+	setInterval(function(){
+	timeCounter.html(startTime)	
+		startTime -= 1;}, 1000);
+	if(startTime === 0){
+	// clearInterval();
+	startTime = '0'; 
+}
+	} 
+countDown();
 
+// if(startTime === 0){
+// 	// clearInterval();
+// 	startTime = 0; 
+// }
 
 
 

@@ -40,6 +40,18 @@ p{
 
 }
 
+#timer{
+	position: relative;
+	height:50px;
+	width:100px;
+	left:295px;
+	top:-3px;
+
+	border: solid red 1px;
+
+}
+
+
 #gameboard{
 	position: absolute;
 	/*left: 27%;*/
