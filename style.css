@@ -1,0 +1,59 @@
+p{
+	text-align: center;
+	color:red;
+}
+
+#wrapper{
+	position:relative;
+	border:solid green 1px;
+	width: 1000;
+	height:600px;
+	margin:15px;
+	padding:15px;
+}
+
+#gamecontainer{
+	position:absolute;
+	border:solid red 1px;
+	height:600px;
+	width:750px;
+	left:15%;
+
+}
+
+#title{
+	display: inline-block;
+	position:absolute;
+	border:solid black 1px;
+	font-size: 50px;
+	/*left:200px;*/
+}
+
+#scorebar{
+	position: relative;
+	height:50px;
+	width:100px;
+	left:400px;
+	top:50px;
+
+	border: solid blue 1px;
+
+}
+
+#gameboard{
+	position: absolute;
+	/*left: 27%;*/
+	height:500px;
+	width:500px;
+	top:100px;
+	border:solid green 1px;
+}
+
+
+.block{
+	position:relative;
+	height:50px;
+	width:50px;
+	border:solid black 1px;
+	background:yellow;
+}
