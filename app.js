@@ -22,7 +22,7 @@ let random = makeNewPos();
   $('.block').animate({
 	 top:random[0],
 	left:random[1]
-}, 2000, function(){
+}, 1000, function(){
 	animateDiv()
 });
   
@@ -33,17 +33,18 @@ animateDiv();
 
 
 //////Score////////////////////////////////////////////////////
+
 let scoreValue = 0;
 let scoreCounter = $('#scorecounter');
+let block = $('.block')
 
 
-$('.block').on('click', function(){
+$(block).on('click', function(){
 	scoreValue += 500;
-	// alert('Your score is ' + scoreValue);
-
+	createSquare();
 scoreCounter.html(scoreValue);
-	
-});
+	});
+
 scoreCounter.html(scoreValue);
 
 
@@ -52,7 +53,7 @@ scoreCounter.html(scoreValue);
 
 //////Timer////////////////////////////////////////////////////
 
-let startTime = 8;
+let startTime = 42;
 let timeCounter = $('#timecounter');
 
 timeCounter.html(startTime);
@@ -63,33 +64,36 @@ function countDown(){
 		startTime -= 1;
 	if (startTime === -1){
 		clearInterval(time);
-		alert(scoreValue)
+		// alert(`Your score: ${scoreValue} points`);
+
 	}
-	}, 1000);
+	}, 3000);
 	} 
 countDown();
 
+//////Create Square///////
 
 
+function createSquare(){
+	let gameBoard = document.getElementById('gameboard')
+	let createSquare = document.createElement('div');
+	
+	createSquare.setAttribute('class', 'block');
+	$(createSquare).css('left', '5px');
+	$(createSquare).css('background', 'red');
+		
+	gameBoard.appendChild(createSquare);
+	animateDiv();	
+}
+
+///////////////////////////////////////////////
 
 
-// clear timer and then call a function
+let button = document.getElementById('makeasquare');
 
-
-
-
-
-
-
-
-
-
-// if(startTime === 0){
-// 	// clearInterval();
-// 	startTime = 0; 
-// }
-
- 
+button.addEventListener('click', function(){
+	createSquare();
+});
 
 
 

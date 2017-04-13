@@ -63,9 +63,10 @@ p{
 
 
 .block{
-	position:relative;
+	position:absolute;
 	height:50px;
 	width:50px;
 	border:solid black 1px;
 	background:yellow;
+	padding:0;
 }
