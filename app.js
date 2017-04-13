@@ -5,6 +5,7 @@ $( document ).ready(function() {
 
 
 //////Random Movement and Speed////////////////////////////////////////////////////
+
 //this was used from the animate lab we did with joe
 function makeNewPos(){
   let h = $('#gameboard').height() - 70;
@@ -22,7 +23,7 @@ let random = makeNewPos();
   $('.block').animate({
 	 top:random[0],
 	left:random[1]
-}, 2000, function(){
+}, 1000, function(){
 	animateDiv()
 });
   
@@ -79,15 +80,16 @@ function countDown(){
 
 
 //////Create Square/////////////////////////
-
+let gameBoard = document.getElementById('gameboard')
 
 function createSquare(){
-	let gameBoard = document.getElementById('gameboard')
+	
 	let square = document.createElement('div');
 	
 	square.setAttribute('class', 'block');
-		$(square).css('left', '5px');
+		$(square).css('left', '215px');
 		$(square).css('background', 'red');
+		// $(square).css('top', 'red');
 	/// this is where I want to give the dynamicaly created
 	/// divs to  
 		square.addEventListener('click', function(){
@@ -104,19 +106,66 @@ function createSquare(){
 	animateDiv();	
 }
 
-///////////////////////////////////////////////
+/////////End Create Square//////////////////////////////////////
 
+///////////startbutton/////////////////////////
 
 let button = document.getElementById('makeasquare');
 
+function startButton(){
+
 button.addEventListener('click', function(){
+	startTime = 5;
 	createSquare();
 	countDown();
+
 });
+} startButton();
+;
+////////////End Start Button/////////////////////////
+
+
+//////Reset///////
+
+let reset = document.getElementById('reset');
+
+reset.addEventListener('click', function(){
+	$('#gameboard').empty();
+	
+	$('#scorecounter').empty();
+	$('#scorecounter').html(0);
+
+	$('#timecounter').empty();
+	$('#timecounter').html(42);
+})
 
 
 
 
+
+
+
+
+
+
+
+
+
+/////////////Score Card///////////
+// let zero = startTime
+
+// function scoreCard(){
+
+// if (zero === 0){
+
+// let scoreCard = document.createElement('div');
+
+// scoreCard.setAttribute('class', 'scorecard');
+
+// gameBoard.appendChild(scoreCard);
+
+
+// }scoreCard();
 
 
 

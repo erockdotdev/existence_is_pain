@@ -70,3 +70,14 @@ p{
 	background:yellow;
 	padding:0;
 }
+#scorecard{
+	position: absolute;
+	/*left: 27%;*/
+	height:500px;
+	width:500px;
+	/*top:100px;*/
+	/*border:solid green 1px*/;
+	background:blue;
+	/*opacity: 50%;*/
+
+}
