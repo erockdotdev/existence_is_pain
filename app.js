@@ -4,7 +4,7 @@ $( document ).ready(function() {
     console.log( "ready!" );
 
 
-//////Random Movement////////////////////////////////////////////////////
+//////Random Movement and Speed////////////////////////////////////////////////////
 //this was used from the animate lab we did with joe
 function makeNewPos(){
   let h = $('#gameboard').height() - 70;
@@ -22,7 +22,7 @@ let random = makeNewPos();
   $('.block').animate({
 	 top:random[0],
 	left:random[1]
-}, 1000, function(){
+}, 2000, function(){
 	animateDiv()
 });
   
@@ -68,12 +68,12 @@ function countDown(){
 		startTime -= 1;
 	if (startTime === -1){
 		clearInterval(time);
-		// alert(`Your score: ${scoreValue} points`);
+		alert(`Your score: ${scoreValue} points`);
 
 	}
 	}, 1000);
 	} 
-countDown();
+
 
 //////End Timer///////////////////////////////////////////
 
@@ -96,6 +96,7 @@ function createSquare(){
 			scoreCounter.html(scoreValue);
 			createSquare();
 			createSquare();
+
 		});
 
 	gameBoard.appendChild(square);
@@ -110,6 +111,7 @@ let button = document.getElementById('makeasquare');
 
 button.addEventListener('click', function(){
 	createSquare();
+	countDown();
 });
 
 
