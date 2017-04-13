@@ -32,18 +32,22 @@ animateDiv();
 //////End Random Movement////////////////////////////////////////////////////
 
 
-//////Score////////////////////////////////////////////////////
+//////Score And Create Next Square////////////////////////////////////////////////////
 
 let scoreValue = 0;
 let scoreCounter = $('#scorecounter');
 let block = $('.block')
 
-
+function score(){
 $(block).on('click', function(){
 	scoreValue += 500;
 	createSquare();
 scoreCounter.html(scoreValue);
 	});
+}
+
+score();
+
 
 scoreCounter.html(scoreValue);
 
@@ -67,22 +71,35 @@ function countDown(){
 		// alert(`Your score: ${scoreValue} points`);
 
 	}
-	}, 3000);
+	}, 1000);
 	} 
 countDown();
 
-//////Create Square///////
+//////End Timer///////////////////////////////////////////
+
+
+//////Create Square/////////////////////////
 
 
 function createSquare(){
 	let gameBoard = document.getElementById('gameboard')
-	let createSquare = document.createElement('div');
+	let square = document.createElement('div');
 	
-	createSquare.setAttribute('class', 'block');
-	$(createSquare).css('left', '5px');
-	$(createSquare).css('background', 'red');
-		
-	gameBoard.appendChild(createSquare);
+	square.setAttribute('class', 'block');
+		$(square).css('left', '5px');
+		$(square).css('background', 'red');
+	/// this is where I want to give the dynamicaly created
+	/// divs to  
+		square.addEventListener('click', function(){
+			$(square).css('display', 'none');
+			scoreValue += 500;
+			scoreCounter.html(scoreValue);
+			createSquare();
+			createSquare();
+		});
+
+	gameBoard.appendChild(square);
+	
 	animateDiv();	
 }
 
