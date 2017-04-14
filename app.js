@@ -138,14 +138,14 @@ function createSquare(){
 	//to get it in a new position, but with help from Matt I have a way to create random values and use them as the values for the 
 	// top and left position
 	let left = Math.random() * 400;
-	let top = Math.floor(Math.random() * 400);
+	let top = Math.random() * 400;
 	// console.log("left =====> " + left);
 	// console.log("top =====> " + top)
 	
 	square.setAttribute('class', 'block');// gives the newly created div the class of block
 		$(square).css('left', left);// this is how values to spawn in new random positions declared
 		$(square).css('top', top);
-		$(square).css('background', 'red');// this oversides the css styling - i'll need to comment this out initialy used 
+		// $(square).css('background', 'red');// this oversides the css styling - i'll need to comment this out initialy used 
 										   //to see the difference between the static HTML div I created and the dynamically created divs
  		//
 		square.addEventListener('click', function(){ // This is where I had to but the event listener in order for it to work on dynamically created dom elements
