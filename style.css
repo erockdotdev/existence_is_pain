@@ -1,6 +1,19 @@
+@font-face{
+font-family:getschwifty;
+src: url('./font/getschwifty.ttf');
+}
+@font-face{
+	font-family:SFDigitalReadout-Light;
+	src: url('./font/SFDigitalReadout-Light');
+}
+
+
 p{
 	text-align: center;
 	color:red;
+}
+body {
+	background:#2e2d2d;
 }
 
 #wrapper{
@@ -11,11 +24,16 @@ p{
 	margin:15px;
 	padding:15px;
 	background-image: url('https://cdn.uploadvr.com/wp-content/uploads/2016/07/rick-and-morty-wallpaper.jpg');
+	/*animation-name: wallpaper;
+	animation-duration: 10s;*/
 }
+
+
+
 
 #gamecontainer{
 	position:absolute;
-	border:solid red 1px;
+	/*border:solid red 1px;*/
 	height:600px;
 	width:750px;
 	left:15%;
@@ -27,9 +45,14 @@ p{
 #title{
 	display: inline-block;
 	position:absolute;
-	border:solid black 1px;
+	/*border:solid black 1px;*/
 	font-size: 50px;
 	/*left:200px;*/
+	font-family: getschwifty;
+	color:#21e6e3;
+	/*border: solid black 1px;*/
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px #7CFC00;/* from http://stackoverflow.com/questions/2570972/css-font-border*/
+	/*text-shadow: 0px 0px 5px #7CFC00;*/
 }
 
 #scorebar{
@@ -38,9 +61,10 @@ p{
 	width:100px;
 	left:400px;
 	top:50px;
-
 	border: solid blue 1px;
-
+	font-family: SFDigitalReadout-Light;
+	font-size: 25px;
+	color:lightgreen;
 }
 
 #timer{
@@ -51,6 +75,9 @@ p{
 	top:-3px;
 
 	border: solid red 1px;
+	font-family: SFDigitalReadout-Light;
+	font-size: 25px;
+	color:lightgreen;
 
 }
 
@@ -63,6 +90,8 @@ p{
 	top:100px;
 	/*left:125px;*/
 	border:solid green 1px;
+	cursor:crosshair;
+
 }
 
 
@@ -75,7 +104,8 @@ p{
 	padding:0;
 	border-radius: 100%;
 	background-image: url(images/mr_messeks_angry2.png);
-	background-position: center
+	background-position: center;
+	/*z-index:5;*/
 }
 .block:hover{
 	border:solid yellow 5px;
@@ -121,7 +151,18 @@ p{
 	font-size: 25px;
 
 }
+
+@keyframes wallpaper{
+	0%{left: 0px;}
+	100%{left: 50px;}
+}
+
+
+
+
+
 /*#reset{
 	opacity:1;
 	z-index: 1;
 }*/
+/*http://jonizaak.deviantart.com/art/Get-Schwifty-A-Rick-and-Morty-font-638073728*/

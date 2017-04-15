@@ -76,8 +76,7 @@ let scoreCounter = $('#scorecounter');// I have a span with the id of score coun
 
 // score();
 
-
-
+///LOOSE POINTS//////
 
 
 ////////End Score//////////////////////////////////////////////
@@ -130,6 +129,26 @@ function countDown(){
 //////Create Square/////////////////////////
 let gameBoard = document.getElementById('gameboard') // sets the gameboard div to the variable gameBoard
 
+$(gameBoard).click(function(){
+
+	
+	if (scoreValue <=99){
+		scoreValue = 0
+		scoreCounter.html(scoreValue)
+	} else {
+		scoreValue -= 100;
+	scoreCounter.html(scoreValue);
+	}//end if else
+
+	$(gameBoard).css('background', 'rgba(255, 0, 0, .75)');
+	setTimeout(function(){
+	$(gameBoard).css('background', 'initial')  }, 100);
+});
+
+
+
+
+
 function createSquare(){
 	
 	let square = document.createElement('div');//creates the div that will be given attributes and appended to be the squares
@@ -148,7 +167,8 @@ function createSquare(){
 		// $(square).css('background', 'red');// this oversides the css styling - i'll need to comment this out initialy used 
 										   //to see the difference between the static HTML div I created and the dynamically created divs
  		//
-		square.addEventListener('click', function(){ // This is where I had to but the event listener in order for it to work on dynamically created dom elements
+		square.addEventListener('click', function(event){ // This is where I had to but the event listener in order for it to work on dynamically created dom elements
+			event.stopPropagation();
 			$(square).css('display', 'none');// this makes the square that was clicked to disappear
 			scoreValue += 500;				 // this adds to the score
 			scoreCounter.html(scoreValue);   // this updated the innerHTML of the score counter span to the updated scoreValue 
@@ -179,7 +199,7 @@ let button = document.getElementById('start');
 	
 
 	button.addEventListener('click', function(){
-		startTime = 5;// this is just used to overwrite counter time for testing
+		startTime = 10;// this is just used to overwrite counter time for testing
 		$('#startwindow').css('display', 'none');// hides start window/startbutton
 		createSquare();// creates square 
 		countDown();//starts countdown I put count down in a fucntion to be called so countdown doesnt start when the page loads
@@ -241,9 +261,20 @@ let finalScore = document.createElement('h1');
 	endWindow.appendChild(finalScore)
 
 
+///////////////////////////////
 
+/////DO NOT DELETE the following code 
 
+let hard = $('#hard');
+$(hard).click(function(){
 
+{	scoreValue -= 500;
+	scoreCounter.html(scoreValue);
+	}//end if else
+/////// this is a left over from trying to make a hard mode button
+//it is connected to nothing, but if i delete it game wont start
+
+});
 
 
 
@@ -275,3 +306,12 @@ let finalScore = document.createElement('h1');
 
 
 });//end jquery
+
+
+
+
+
+
+
+
+
