@@ -35,6 +35,14 @@ body {
 	padding:0;
 
 }
+#meseeks{
+	position:relative;
+	display:initial;
+	top:25px;
+	left: 3%;
+	animation-name: mrM;
+	animation-duration: 3s;
+}
 
 #wrapper{
 	position:absolute;
@@ -66,7 +74,7 @@ body {
 	/*border:solid red 1px;*/
 	height:635px;
 	width:600px;
-	left:27%;
+	left:29%;
 	top:5%;
 	background: rgba(0, 0, 0, .9);
 	/*opacity: .75;*/
@@ -216,7 +224,7 @@ body {
 	font-size:17px;
 	position: absolute;
 	top: 380px;
-	left: 325px;
+	left: 340px;
 	height:50px;
 	width:100px;
 	border-color: #21e6e3;
@@ -247,7 +255,7 @@ body {
 	font-size:17px;
 	position: absolute;
 	top: 380px;
-	left: 325px;
+	left: 340px;
 	height:50px;
 	width:100px;
 	border-color: #21e6e3;
@@ -279,7 +287,7 @@ body {
 	font-size:17px;
 	position: absolute;
 	top: 380px;
-	left: 325px;
+	left: 340px;
 	height:50px;
 	width:100px;
 	border-color: #21e6e3;
@@ -298,15 +306,24 @@ body {
 	0%{left: -20px;}
 	100%{left: -500px;}
 }
+@keyframes mrM{
+	0%{opacity: 0;}
+	100%{opacity: 1;}
+}
+
+/*//////MEDIA QUERY/////*/
+@media (max-width:650px){
+
+	#gamecontainer{
+		left:4%;
+	}
+	body {
+		background-color: white;
+	}
+}
 
 
 
-
-
-/*#reset{
-	opacity:1;
-	z-index: 1;
-}*/
 /*http://jonizaak.deviantart.com/art/Get-Schwifty-A-Rick-and-Morty-font-638073728*/
 /*https://www.youtube.com/watch?v=67KQcBwrNkQ*/
 /*https://www.youtube.com/watch?v=n4Xp6g-_UUw*/

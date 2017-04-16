@@ -1,15 +1,3 @@
-// class Square {
-// 	constructor(h, w,){
-// 		this.h = h;
-// 		this.
-
-// 	}
-
-
-
-// }
-
-
 
 //Start jquery
 $( document ).ready(function() {
@@ -28,7 +16,7 @@ $( document ).ready(function() {
 
 
 function makeNewPos(){
-  let h = $('#gameboard').height() - 60;//-70 and -50 so the new vlues dont get too cloade to the border of the gme board
+  let h = $('#gameboard').height() - 50;//-70 and -50 so the new vlues dont get too cloade to the border of the gme board
   let w = $('#gameboard').width() - 142;
   let nh = h * Math.random();
   let nw = w * Math.random();
@@ -88,7 +76,7 @@ let scoreCounter = $('#scorecounter');// I have a span with the id of score coun
 
 //////Timer////////////////////////////////////////////////////
 
-let startTime = 0; // initial time value
+let startTime = 42; // initial time value
 let timeCounter = $('#timecounter'); // I have a span with the id of timecounter and I set it to the variable timeCounter
 
 	timeCounter.html(startTime);// takes the value in startTime and places it in the span timeCounter 
@@ -134,13 +122,14 @@ function countDown(){
 let gameBoard = document.getElementById('gameboard') // sets the gameboard div to the variable gameBoard
 
 $(gameBoard).click(function(){
-
+laser.play();
 	
 	if (scoreValue <=400){
 		scoreValue = 0
 		scoreCounter.html(scoreValue)
 	} else {
 		scoreValue -= 300;
+		laser.play();
 	scoreCounter.html(scoreValue);
 	finalScore.innerHTML = `YOU SCORED<br /> ${scoreValue} points`;
 	}//end if else
@@ -204,9 +193,10 @@ let button = document.getElementById('start');
 	
 
 	button.addEventListener('click', function(){
-		startTime = 5;// this is just used to overwrite counter time for testing
+		startTime = 42;// this is just used to overwrite counter time for testing
 		$('#startwindow').css('display', 'none');// hides start window/startbutton
 		$('#howtoplaywindow').css('display', 'none');
+		startTime = 42;
 		hello.play(); 
 		createSquare();// creates square 
 		countDown();//starts countdown I put count down in a fucntion to be called so countdown doesnt start when the page loads
@@ -252,7 +242,7 @@ let end = document.getElementById('end');
 
 		$('#timecounter').empty(); //clears timer
 		$('#timecounter').html(42); // sets timer back to 42 otherwise it would be blank on reset and will take a second to appear
-
+		meeseeks.play();
 		hello.play(); 
 		$('#startwindow').css('display', 'initial');
 		$('#endwindow').css('display', 'none');// makes end window disappear
@@ -354,6 +344,8 @@ $(hard).click(function(){
 
 });
 
+
+//SOUNDS/////////////////
 // PLAY THEME
 $("#music").get(0).play();
 
@@ -370,23 +362,17 @@ let hello = document.createElement('audio');
 hello.setAttribute('src','./sounds/hello.mp3');
 // hello.play(); 
 
+let meeseeks = document.createElement('audio');
+meeseeks.setAttribute('src','./sounds/lookatme.mp3');
+meeseeks.play();
+
+let laser = document.createElement('audio');
+laser.setAttribute('src','./sounds/Laser2.mp3');
 
 
-/////////////Score Card///////////
-// let zero = startTime
-
-// function scoreCard(){
-
-// if (zero === 0){
-
-// let scoreCard = document.createElement('div');
-
-// scoreCard.setAttribute('class', 'scorecard');
-
-// gameBoard.appendChild(scoreCard);
 
 
-// }scoreCard();
+
 
 
 
