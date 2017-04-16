@@ -1,9 +1,9 @@
 
-//Start jquery
+// Start jQuery
 $( document ).ready(function() {
     console.log( "ready!" );
- 
- $('#fade').fadeIn(1000);// fades page in on initial load.
+// fades page in on initial load. 
+$('#fade').fadeIn(1000);
 
 
 //////Random Movement and Speed////////////////////////////////
@@ -34,13 +34,12 @@ function animateDiv() {
   // this is where the make new position values are used
   top:random[0], 
   left:random[1]
-}, 1000, function() {
+  }, 1000, function() {
   // call back to itself otherwise it would only run once
-	animateDiv() 
+  animateDiv() 
 });
   
 } 
-
 //////End Random Movement//////////////////////////////////////
 ///////////////////////////////////////////////////////////////
 
@@ -53,14 +52,14 @@ if I set the listener here, it only worked on html created objects and not dynam
 create new div elements, but clicks on those created elements did nothing. I solved that by adding the eventlistener directly to the dynamically 
 created divs*/
 
+// initial score value
+let scoreValue = 0; 
+// I have a span with the id of score counter and I set it to the variable scoreCounter
+const scoreCounter = $('#scorecounter');
 
-let scoreValue = 0; // initial score value
-const scoreCounter = $('#scorecounter');// I have a span with the id of score counter and I set it to the variable scoreCounter
-
-scoreCounter.html(scoreValue);// Takes the value in scoreValue and places it in the span score counter this is placed here 
-	//to display initial value, before anything is added to it 
-
-
+/* Takes the value in scoreValue and places it in the span score counter this is placed here 
+to display initial value, before anything is added to it */
+scoreCounter.html(scoreValue); 
 ////////End Score//////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////
 
@@ -68,101 +67,115 @@ scoreCounter.html(scoreValue);// Takes the value in scoreValue and places it in 
 
 //////Timer////////////////////////////////////////////////////
 
-let startTime = 42; // initial time value
-const timeCounter = $('#timecounter'); // I have a span with the id of timecounter and I set it to the variable timeCounter
+// initial time value
+let startTime = 42; 
+// I have a span with the id of timecounter and I set it to the variable timeCounter
+const timeCounter = $('#timecounter'); 
+/* Takes the value in startTime and places it in the span timeCounter 
+this is here to show the initial value in the counter before it is subtracted from. */
+timeCounter.html(startTime);
 
-timeCounter.html(startTime);// takes the value in startTime and places it in the span timeCounter 
-		//this is here to show the initial value in the counter before it is subtracted from.
-
-// The following function takes the startTime value and reduces the value by 1 every second.
-// It has an if statement to clear the interval at -1 (that way we see zero on screen)
-// and it triggers the endwindow to display (defined later) that shows 'your score' and the game reset and end options
-function countDown(){
+/* The following function takes the startTime value and reduces the value by 1 every second.
+It has an if statement to clear the interval at -1 (that way we see zero on screen)
+and it triggers the endwindow to display (defined later) that shows 'your score' and the game reset and end options */
+function countDown() {
 	
-	const time = setInterval(function(){
-	timeCounter.html(startTime)	
-	startTime -= 1;
-/////////Above, start counter - Below, condition to end timers countdown///////////////////////	
-	if (startTime === -1){
+  const time = setInterval(function() {
+  timeCounter.html(startTime)	
+  startTime -= 1;
+ //Above, start counter - Below, condition to end timers countdown/	
+  if (startTime === -1) {
 	clearInterval(time);
-	$('#endwindow').css('display', 'initial');///// the end window displaying score is hidden until this point
+	// the end window displaying score is hidden until this point
+	$('#endwindow').css('display', 'initial');///
 
-	}}, 1000);} 
+	}}, 1000);}; 
 
 
 //////End Timer////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////
 
 
-//////gameboard and properities/////////////////////////
-const gameBoard = document.getElementById('gameboard') // sets the gameboard div to the variable gameBoard
+//////GAMEBOARD AND PROPERITIES///////////////////////////////
+// When the gameboard is clicked I want that to count as a miss. The score will be subtracted from, the screen will flash, and the sound will play.
+// Sets the gameboard div to the variable gameBoard
+const gameBoard = document.getElementById('gameboard'); 
 
-//when the gameboard is clicked I want that to count as a miss. the score will be subtracted from, the screen will flash, and the sound will play
-
-$(gameBoard).click(function(){
-laser.play();
-	
-	if (scoreValue <=400){//this if statement keeps the score from showing a negative number
-		scoreValue = 0
-		scoreCounter.html(scoreValue)
-	} else {
-		scoreValue -= 300;//deduct 300 points from player
-		laser.play();//sound effect
-	scoreCounter.html(scoreValue);//update score counter
-	finalScore.innerHTML = `YOU SCORED<br /> ${scoreValue} points`;//this is one of two locations(add to score is the second) that post to the finalscore window. that way the final
-	//score will reflect the latest addition or subtraction
+  $(gameBoard).click(function() {
+  laser.play();
+  // this if statement keeps the score from showing a negative number
+  if (scoreValue <=400) {
+	scoreValue = 0
+    scoreCounter.html(scoreValue)
+  } else {
+		// deduct 300 points from player
+	scoreValue -= 300;
+	// sound effect
+	laser.play();
+    //update score counter
+    scoreCounter.html(scoreValue);
+    /* this is one of two locations(add to score is the second) that post to the finalscore window. that way the final
+    score will reflect the latest addition or subtraction */
+    finalScore.innerHTML = `YOU SCORED<br /> ${scoreValue} points`;
 	}//end if else
-
-	$(gameBoard).css('background', 'rgba(33,230,227, .75)');//when the background is clicked it changes to this blue-ish color
-	setTimeout(function(){
-	$(gameBoard).css('background', 'rgba(0, 0, 0, .0)')  }, 100);// the timeout is set so after just a quick flash the background changes from that bluish clolor back to black, creating a flash
+	// When the background is clicked it changes to this blue-ish color
+	$(gameBoard).css('background', 'rgba(33,230,227, .75)');
+	// The timeout is set so after just a quick flash the background changes from that bluish clolor back to black, creating a flash
+	setTimeout(function() {
+	$(gameBoard).css('background', 'rgba(0, 0, 0, .0)')  }, 100);
 });
-
+//////GAMEBOARD AND PROPERITIES////////////////////////////////
+///////////////////////////////////////////////////////////////
 
 
 
 //////Create Square/////////////////////////
 function createSquare(){
+// Creates the div that will be given attributes and appended to be the gameboard. NOTE: I'm using circles now, but the original code was written for squares
+  let square = document.createElement('div');
 	
-	let square = document.createElement('div');//creates the div that will be given attributes and appended to be the squares
+	/*A big problem I had was getting new blocks to spawn in random locations I knew how to set the display and adjust top and left
+	to get it in a new position, but with help from Matt I have a way to create random values and use them as the values for the 
+	top and left position*/
+  let left = Math.random() * 550;
+  let top = Math.random() * 460;
+  // Gives the newly created div the class of block
+  square.setAttribute('class', 'block');
+  // This is how values to spawn in new random positions declared
+  $(square).css('left', left);
+  $(square).css('top', top);
+  /*$(square).css('background', 'red');
+  this oversides the css styling - i'll need to comment this out initialy used 
+  to see the difference between the static HTML div I created and the dynamically created divs*/
 	
-	// a big problem I had was getting new blocks to spawn in random locations I knew how to set the display  and adjust top and left
-	//to get it in a new position, but with help from Matt I have a way to create random values and use them as the values for the 
-	// top and left position
-	let left = Math.random() * 550;
-	let top = Math.random() * 460;
-	// console.log("left =====> " + left);
-	// console.log("top =====> " + top)
-	
-	square.setAttribute('class', 'block');// gives the newly created div the class of block
-		$(square).css('left', left);// this is how values to spawn in new random positions declared
-		$(square).css('top', top);
-		// $(square).css('background', 'red');// this oversides the css styling - i'll need to comment this out initialy used 
-										   //to see the difference between the static HTML div I created and the dynamically created divs
- 		//
-		square.addEventListener('click', function(event){ // This is where I had to but the event listener in order for it to work on dynamically created dom elements
-			event.stopPropagation();
-			$(square).css('display', 'none');// this makes the square that was clicked to disappear
-			scoreValue += 500;				 // this adds to the score
-			scoreCounter.html(scoreValue);   // this updated the innerHTML of the score counter span to the updated scoreValue 
-			finalScore.innerHTML = `YOU SCORED<br />  ${scoreValue} points`; // this is for the endwindow | it takes the score value and places it 
-			// in the innerHTML at the end of the game. It has to be placed in here to send the updated scoreValue to finalScore. if this is 
-			// outside of the eventlistener, it will not show the updated scoreValue but the initial value of scoreValue which is 0.
-			goodBye.play();
-
-			createSquare();//the click event is a call back will create the a new square with all of these attributes
-			createSquare();// this is to create a second square
-			// console.log('score:', scoreValue)
-			// return scoreValue;
-			});
-
-	gameBoard.appendChild(square);// puts square on the game
-	
-	animateDiv(); // runs animate div	
+  // This is where I had to but the event listener in order for it to work on dynamically created dom elements	
+  square.addEventListener('click', function(event) { 
+  // This was a great code I found on w3. The eventlisteners on the divs created here were triggering the eventlistener on the game board(bubbling up). This fixed that 
+  event.stopPropagation();
+  // This makes the square that was clicked to disappear
+  $(square).css('display', 'none');
+  // Adds to the score
+  scoreValue += 500;				 
+  // Updates the innerHTML of the score counter span to the updated scoreValue 
+  scoreCounter.html(scoreValue);   
+  /* This is for the endwindow. It takes the score value and places it 
+  in the innerHTML at the end of the game.(the second area I mentioned earlier) It has to be placed in here to send the updated scoreValue to 
+  finalScore. If this is outside of the eventlistener, it will not show the updated scoreValue but the initial value of scoreValue which is 0.*/
+  finalScore.innerHTML = `YOU SCORED<br />  ${scoreValue} points`; 
+  // Sound created when clicked
+  goodBye.play();
+  // The click event is a call back will create the a new square with all of these attribute and then another one.
+  createSquare();
+  createSquare();
+  });
+  // Puts square on the game
+  gameBoard.appendChild(square);
+  // Runs animate div	
+  animateDiv(); 
 }
 
 /////////End Create Square//////////////////////////////////////
-
+////////////////////////////////////////////////////////////////
 
 
 ///////////startbutton/////////////////////////
