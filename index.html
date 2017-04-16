@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div id="fade">
 	<div id="wrapper"></div>
 
 <!-- keep game within here -->
@@ -21,8 +22,8 @@
 						<span id = 'timecounter' ></span>
 					</div>
 			<div id="startwindow">
-				<button id="start">start</button>
-				<button id="howtoplaybutton">how to play</button>
+				<button id="start">START</button>
+				<button id="howtoplaybutton">HOW TO PLAY</button>
 
 			</div>
 			
@@ -47,11 +48,20 @@
 		
 	</div>
 
-
+</div>
+</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src = 'app.js'></script>
 <script src = 'squarecreator.js'></script>
+<script>
+// This version runs the function *immediately*
+(function($) {
+
+  $(document.body).fadeIn(4000);
+
+})
+</script>
 
 </body>
 </html>

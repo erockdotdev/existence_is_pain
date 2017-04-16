@@ -14,6 +14,10 @@
 //Start jquery
 $( document ).ready(function() {
     console.log( "ready!" );
+ $('#fade').fadeIn(1000);
+
+
+     // $(document.body).fadeIn(200000)
 
 
 //////Random Movement and Speed////////////////////////////////////////////////////
@@ -138,7 +142,7 @@ $(gameBoard).click(function(){
 	} else {
 		scoreValue -= 100;
 	scoreCounter.html(scoreValue);
-	finalScore.innerHTML = `Your score:<br /> ${scoreValue} points`;
+	finalScore.innerHTML = `YOU SCORED<br /> ${scoreValue} points`;
 	}//end if else
 
 	$(gameBoard).css('background', 'rgba(33,230,227, .75)');
@@ -173,7 +177,7 @@ function createSquare(){
 			$(square).css('display', 'none');// this makes the square that was clicked to disappear
 			scoreValue += 500;				 // this adds to the score
 			scoreCounter.html(scoreValue);   // this updated the innerHTML of the score counter span to the updated scoreValue 
-			finalScore.innerHTML = `Your score:<br />  ${scoreValue} points`; // this is for the endwindow | it takes the score value and places it 
+			finalScore.innerHTML = `YOU SCORED<br />  ${scoreValue} points`; // this is for the endwindow | it takes the score value and places it 
 			// in the innerHTML at the end of the game. It has to be placed in here to send the updated scoreValue to finalScore. if this is 
 			// outside of the eventlistener, it will not show the updated scoreValue but the initial value of scoreValue which is 0.
 
