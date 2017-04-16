@@ -2,147 +2,126 @@
 //Start jquery
 $( document ).ready(function() {
     console.log( "ready!" );
- $('#fade').fadeIn(1000);
+ 
+ $('#fade').fadeIn(1000);// fades page in on initial load.
 
 
-     // $(document.body).fadeIn(200000)
+//////Random Movement and Speed////////////////////////////////
 
 
-//////Random Movement and Speed////////////////////////////////////////////////////
+/* this was used from the animate lab we did with joe
+this takes the gameboard height and width and adds math.random to create new values for height and width 
+this is done to give random values to animate div */
 
-//this was used from the animate lab we did with joe
-// this takes the gameboard height and width and adds math.random to create new values for height and width 
-//this is done to give random values to animate div
-
-
-function makeNewPos(){
-  let h = $('#gameboard').height() - 50;//-70 and -50 so the new vlues dont get too cloade to the border of the gme board
+// -50and -142 so the new values don't get too close to the border of the game board
+function makeNewPos() {
+  let h = $('#gameboard').height() - 50;
   let w = $('#gameboard').width() - 142;
   let nh = h * Math.random();
   let nw = w * Math.random();
-  return [nw,nh] //returns an array with one array index for each position
+ 
+ // returns an array with one array index for each position
+  return [nw,nh] 
 }
 
-// edit the animateDiv() function so that it uses the makeNewPos() function
-// and uses the jquery .animate() method to keep randomly moving it
 
-//take an element and moves it from its original position and to a new on on a loop and with a set speed
-function animateDiv(){
-let random = makeNewPos();
 
-	  $('.block').animate({ //anything with the class block will move
-		 top:random[0], // this is where the make new position values are used
-		left:random[1]
-	}, 1000, function(){
-		animateDiv() // call back to itself otherwise it would only run once
-	});
-	  
-	} 
+// takes an element and moves it from its original position and to a new on on a loop and with a set speed
+function animateDiv() {
+  let random = makeNewPos();
+  // anything with the class block will move
+  $('.block').animate({ 
+  // this is where the make new position values are used
+  top:random[0], 
+  left:random[1]
+}, 1000, function() {
+  // call back to itself otherwise it would only run once
+	animateDiv() 
+});
+  
+} 
 
-// animateDiv();//runs animate div
-//////End Random Movement////////////////////////////////////////////////////
+//////End Random Movement//////////////////////////////////////
+///////////////////////////////////////////////////////////////
+
+
 
 
 //////Score ////////////////////////////////////////////////////
-//here I tried making an event listener to add to the score and create new blocks when anything with the class of block was clicked on.
-//set here, this only worked on html created objects and not dynamicaly created ones. meaning the first click would add to the score and 
-// create new div elements, but clicks on those created elements did nothing. that was solved later in the create square function
+/*here I tried making an event listener to add to the score and create new blocks when anything with the class of block was clicked on.
+if I set the listener here, it only worked on html created objects and not dynamicaly created ones. Meaning the first click would add to the score and 
+create new div elements, but clicks on those created elements did nothing. I solved that by adding the eventlistener directly to the dynamically 
+created divs*/
 
 
 let scoreValue = 0; // initial score value
-let scoreCounter = $('#scorecounter');// I have a span with the id of score counter and I set it to the variable score Counter
+const scoreCounter = $('#scorecounter');// I have a span with the id of score counter and I set it to the variable scoreCounter
 
-	scoreCounter.html(scoreValue);// takes the value in scoreValue and places it in the span score counter this is placed here 
+scoreCounter.html(scoreValue);// Takes the value in scoreValue and places it in the span score counter this is placed here 
 	//to display initial value, before anything is added to it 
-
-// let block = $('.block')
-
-// function score(){
-// $(block).on('click', function(){
-// 	scoreValue += 500;
-// 	createSquare();
-// scoreCounter.html(scoreValue);
-// 	});
-// // console.log('score:', scoreValue)
-// }
-
-// score();
-
-///LOOSE POINTS//////
 
 
 ////////End Score//////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
+
 
 
 //////Timer////////////////////////////////////////////////////
 
 let startTime = 42; // initial time value
-let timeCounter = $('#timecounter'); // I have a span with the id of timecounter and I set it to the variable timeCounter
+const timeCounter = $('#timecounter'); // I have a span with the id of timecounter and I set it to the variable timeCounter
 
-	timeCounter.html(startTime);// takes the value in startTime and places it in the span timeCounter 
+timeCounter.html(startTime);// takes the value in startTime and places it in the span timeCounter 
 		//this is here to show the initial value in the counter before it is subtracted from.
 
-//this function takes the startTime value and reduces the value by 1 every second
-// it has an if statement to clear the interval at one
-// and it triggers the endwindow to display (defined later) that shows 'your score' and the game reset option 
+// The following function takes the startTime value and reduces the value by 1 every second.
+// It has an if statement to clear the interval at -1 (that way we see zero on screen)
+// and it triggers the endwindow to display (defined later) that shows 'your score' and the game reset and end options
 function countDown(){
 	
-	let time = setInterval(function(){
+	const time = setInterval(function(){
 	timeCounter.html(startTime)	
-		startTime -= 1;
+	startTime -= 1;
 /////////Above, start counter - Below, condition to end timers countdown///////////////////////	
 	if (startTime === -1){
-		clearInterval(time);
-		$('#endwindow').css('display', 'initial');///// the end window displaying score is hidden until this point
-		// alert(`Your score: ${scoreValue} points`);
+	clearInterval(time);
+	$('#endwindow').css('display', 'initial');///// the end window displaying score is hidden until this point
 
-	}
-	}, 1000);
-	} 
+	}}, 1000);} 
 
 
-//////End Timer///////////////////////////////////////////
-//// these notes are from Matt on creating classes
-// class Square {
-// 	constructor(xAxis, yAxis) {
-//       this.xAxis = xAxis;
-// 	}
-// 	createSquare() {
+//////End Timer////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
 
-// 	}
-// 	animateDiv() {
 
-// 	}
-// }
+//////gameboard and properities/////////////////////////
+const gameBoard = document.getElementById('gameboard') // sets the gameboard div to the variable gameBoard
 
-// let square = new Square();
-// square.createSquare();
-
-//////Create Square/////////////////////////
-let gameBoard = document.getElementById('gameboard') // sets the gameboard div to the variable gameBoard
+//when the gameboard is clicked I want that to count as a miss. the score will be subtracted from, the screen will flash, and the sound will play
 
 $(gameBoard).click(function(){
 laser.play();
 	
-	if (scoreValue <=400){
+	if (scoreValue <=400){//this if statement keeps the score from showing a negative number
 		scoreValue = 0
 		scoreCounter.html(scoreValue)
 	} else {
-		scoreValue -= 300;
-		laser.play();
-	scoreCounter.html(scoreValue);
-	finalScore.innerHTML = `YOU SCORED<br /> ${scoreValue} points`;
+		scoreValue -= 300;//deduct 300 points from player
+		laser.play();//sound effect
+	scoreCounter.html(scoreValue);//update score counter
+	finalScore.innerHTML = `YOU SCORED<br /> ${scoreValue} points`;//this is one of two locations(add to score is the second) that post to the finalscore window. that way the final
+	//score will reflect the latest addition or subtraction
 	}//end if else
 
-	$(gameBoard).css('background', 'rgba(33,230,227, .75)');
+	$(gameBoard).css('background', 'rgba(33,230,227, .75)');//when the background is clicked it changes to this blue-ish color
 	setTimeout(function(){
-	$(gameBoard).css('background', 'rgba(0, 0, 0, .0)')  }, 100);
+	$(gameBoard).css('background', 'rgba(0, 0, 0, .0)')  }, 100);// the timeout is set so after just a quick flash the background changes from that bluish clolor back to black, creating a flash
 });
 
 
 
 
-
+//////Create Square/////////////////////////
 function createSquare(){
 	
 	let square = document.createElement('div');//creates the div that will be given attributes and appended to be the squares

@@ -25,3 +25,18 @@
 
 
 //  // });
+//// these notes are from Matt on creating classes
+// class Square {
+// 	constructor(xAxis, yAxis) {
+//       this.xAxis = xAxis;
+// 	}
+// 	createSquare() {
+
+// 	}
+// 	animateDiv() {
+
+// 	}
+// }
+
+// let square = new Square();
+// square.createSquare();
