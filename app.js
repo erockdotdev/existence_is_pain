@@ -138,7 +138,7 @@ $(gameBoard).click(function(){
 	} else {
 		scoreValue -= 100;
 	scoreCounter.html(scoreValue);
-	finalScore.innerHTML = `Your score ${scoreValue} points`;
+	finalScore.innerHTML = `Your score:<br /> ${scoreValue} points`;
 	}//end if else
 
 	$(gameBoard).css('background', 'rgba(33,230,227, .75)');
@@ -173,7 +173,7 @@ function createSquare(){
 			$(square).css('display', 'none');// this makes the square that was clicked to disappear
 			scoreValue += 500;				 // this adds to the score
 			scoreCounter.html(scoreValue);   // this updated the innerHTML of the score counter span to the updated scoreValue 
-			finalScore.innerHTML = `Your score ${scoreValue} points`; // this is for the endwindow | it takes the score value and places it 
+			finalScore.innerHTML = `Your score:<br />  ${scoreValue} points`; // this is for the endwindow | it takes the score value and places it 
 			// in the innerHTML at the end of the game. It has to be placed in here to send the updated scoreValue to finalScore. if this is 
 			// outside of the eventlistener, it will not show the updated scoreValue but the initial value of scoreValue which is 0.
 
@@ -200,7 +200,7 @@ let button = document.getElementById('start');
 	
 
 	button.addEventListener('click', function(){
-		startTime = 42;// this is just used to overwrite counter time for testing
+		startTime = 5;// this is just used to overwrite counter time for testing
 		$('#startwindow').css('display', 'none');// hides start window/startbutton
 	$('#howtoplaywindow').css('display', 'none');
 		createSquare();// creates square 
