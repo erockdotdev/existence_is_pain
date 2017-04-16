@@ -200,8 +200,9 @@ let button = document.getElementById('start');
 	
 
 	button.addEventListener('click', function(){
-		startTime = 10;// this is just used to overwrite counter time for testing
+		startTime = 42;// this is just used to overwrite counter time for testing
 		$('#startwindow').css('display', 'none');// hides start window/startbutton
+	$('#howtoplaywindow').css('display', 'none');
 		createSquare();// creates square 
 		countDown();//starts countdown I put count down in a fucntion to be called so countdown doesnt start when the page loads
 	});
@@ -252,6 +253,74 @@ let end = document.getElementById('end');
 	});
 
 ///////////////END END BUTTON///////////////////////////
+
+///////////////HOW TO PLAY BUTTON - in start menu/////
+let howToPlay = $('#howtoplaybutton')
+
+$(howToPlay).on('click', function(){
+	$('#howtoplaywindow').css('display','initial');
+	$('#startwindow').css('display', 'none');
+
+})
+
+$('#howtoplaywindow').css('display', 'none');
+
+/////////////////////////////////////
+
+/////play button - how to play window/////////
+
+let play = $('#play');
+
+$(play).on('click', function(){
+	$('#howtoplaywindow').css('display', 'none');
+	$('#startwindow').css('display', 'none');// hides start window/startbutton
+	$('#gameboard').empty();//clears gameboard
+		
+		$('#scorecounter').empty();// clears scorecounter
+		$('#scorecounter').html(0);// sets countervalue to 0 otherwise on reset it would be blank on reset
+
+		$('#timecounter').empty(); //clears timer
+		$('#timecounter').html(42); // sets timer back to 42 otherwise it would be blank on reset and will take a second to appear
+
+		$('#startwindow').css('display', 'initial');
+		$('#endwindow').css('display', 'none');// makes end window disappear
+
+		//end button is reset minus the last 4 lines
+		$('#startwindow').css('display', 'none');
+		startTime = 42;
+		scoreValue = 0;
+
+
+
+
+		createSquare();// creates square 
+		countDown()
+
+})
+///////////END play button///////////
+
+let backButton = $('#back');
+
+$(backButton).on('click', function(){
+		$('#startwindow').css('display', 'initial');
+		$('#endwindow').css('display', 'none');// makes end window disappear
+		$('#howtoplaywindow').css('display', 'none');
+	});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ///////////////END WINDOW FINAL SCORE///////
