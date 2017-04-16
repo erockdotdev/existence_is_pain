@@ -20,8 +20,9 @@ body {
 	position:relative;
 	border:solid green 1px;
 	width: 1000;
-	height:600px;
+	height:640px;
 	margin:15px;
+	top:20px;
 	padding:15px;
 	background-image: url('https://cdn.uploadvr.com/wp-content/uploads/2016/07/rick-and-morty-wallpaper.jpg');
 	/*animation-name: wallpaper;
@@ -34,11 +35,13 @@ body {
 #gamecontainer{
 	position:absolute;
 	/*border:solid red 1px;*/
-	height:600px;
-	width:750px;
-	left:15%;
+	height:635px;
+	width:600px;
+	left:25%;
+	top:3%;
 	background: rgba(0, 0, 0, .9);
 	/*opacity: .75;*/
+	border-radius: 5%
 
 }
 
@@ -46,37 +49,38 @@ body {
 	display: inline-block;
 	position:absolute;
 	/*border:solid black 1px;*/
-	font-size: 50px;
+	font-size: 60px;
 	/*left:200px;*/
 	font-family: getschwifty;
 	color:#21e6e3;
 	/*border: solid black 1px;*/
 	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px #7CFC00;/* from http://stackoverflow.com/questions/2570972/css-font-border*/
 	/*text-shadow: 0px 0px 5px #7CFC00;*/
+	transform: rotate(-3deg)
 }
 
 #scorebar{
-	position: relative;
-	height:50px;
-	width:100px;
-	left:400px;
-	top:50px;
-	border: solid blue 1px;
+	position: absolute;
+	height:30px;
+	width:200px;
+	left:65px;
+	top:65px;
+	/*border: solid blue 1px;*/
 	font-family: SFDigitalReadout-Light;
-	font-size: 25px;
+	font-size: 45px;
 	color:lightgreen;
 }
 
 #timer{
-	position: relative;
-	height:50px;
-	width:100px;
-	left:295px;
-	top:-3px;
+	position: absolute;
+	height:30px;
+	width:200px;
+	left:405px;
+	top:65px;
 
-	border: solid red 1px;
+	/*border: solid red 1px;*/
 	font-family: SFDigitalReadout-Light;
-	font-size: 25px;
+	font-size: 45px;
 	color:lightgreen;
 
 }
@@ -84,13 +88,14 @@ body {
 
 #gameboard{
 	position: absolute;
-	/*left: 27%;*/
+	left: 0%;
 	height:500px;
-	width:500px;
+	width:599px;
 	top:100px;
 	/*left:125px;*/
-	border:solid green 1px;
+	/*border:solid lightgreen 3px;*/
 	cursor:crosshair;
+	/*border-radius: 5%;*/
 
 }
 
@@ -118,7 +123,7 @@ body {
 
 #startwindow{
 	position: absolute;
-	/*left: 27%;*/
+	left: 16%;
 	height:500px;
 	width:500px;
 	top: 101px;
@@ -130,7 +135,7 @@ body {
 
 #endwindow{
 	position: absolute;
-	/*left: 27%;*/
+	left: 16%;
 	height:500px;
 	width:500px;
 	top: 101px;

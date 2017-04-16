@@ -24,8 +24,8 @@ $( document ).ready(function() {
 
 
 function makeNewPos(){
-  let h = $('#gameboard').height() - 70;//-70 and -50 so the new vlues dont get too cloade to the border of the gme board
-  let w = $('#gameboard').width() - 50;
+  let h = $('#gameboard').height() - 50;//-70 and -50 so the new vlues dont get too cloade to the border of the gme board
+  let w = $('#gameboard').width() - 130;
   let nh = h * Math.random();
   let nw = w * Math.random();
   return [nw,nh] //returns an array with one array index for each position
@@ -138,11 +138,12 @@ $(gameBoard).click(function(){
 	} else {
 		scoreValue -= 100;
 	scoreCounter.html(scoreValue);
+	finalScore.innerHTML = `Your score ${scoreValue} points`;
 	}//end if else
 
-	$(gameBoard).css('background', 'rgba(255, 0, 0, .75)');
+	$(gameBoard).css('background', 'rgba(33,230,227, .75)');
 	setTimeout(function(){
-	$(gameBoard).css('background', 'initial')  }, 100);
+	$(gameBoard).css('background', 'rgba(0, 0, 0, .0)')  }, 100);
 });
 
 
@@ -156,8 +157,8 @@ function createSquare(){
 	// a big problem I had was getting new blocks to spawn in random locations I knew how to set the display  and adjust top and left
 	//to get it in a new position, but with help from Matt I have a way to create random values and use them as the values for the 
 	// top and left position
-	let left = Math.random() * 400;
-	let top = Math.random() * 400;
+	let left = Math.random() * 500;
+	let top = Math.random() * 460;
 	// console.log("left =====> " + left);
 	// console.log("top =====> " + top)
 	
@@ -227,6 +228,7 @@ let reset = document.getElementById('reset');
 		//end button is reset minus the last 4 lines
 		$('#startwindow').css('display', 'none');
 		startTime = 42;
+		scoreValue = 0;
 		createSquare();
 		countDown();
 	});
