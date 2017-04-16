@@ -1,3 +1,6 @@
+*{
+	-webkit-user-select: none;
+}
 @font-face{
 font-family:getschwifty;
 src: url('./font/getschwifty.ttf');
@@ -7,10 +10,22 @@ src: url('./font/getschwifty.ttf');
 	src: url('./font/SFDigitalReadout-Light');
 }
 
+#rules a{
+	text-decoration: none;
+	font-size:25px;
 
-p{
+}
+
+#rules{
+	position:absolute;
+	width:450px;
+	left:12%;
 	text-align: center;
-	color:red;
+	color:black;
+	text-decoration: none;
+	line-height: 50px;
+	font-size:20px;
+
 }
 body {
 	background:#1b1b1b;
@@ -27,12 +42,13 @@ body {
 	width: 1800px;
 	height:665px;
 	margin:15px;
-	/*top:0px;*/
+	top:-2px;
 	/*padding:5px;*/
 	left:-20px;
 	padding:0;
 	/*border-radius: 10px;*/
 	background-image: url('https://cdn.uploadvr.com/wp-content/uploads/2016/07/rick-and-morty-wallpaper.jpg');
+	/*background-blend-mode: darken;*/
 	animation-name: wallpaper;
 	animation-duration: 84s;
 	/*animation-delay: 2s;*/
@@ -51,7 +67,7 @@ body {
 	height:635px;
 	width:600px;
 	left:27%;
-	top:6%;
+	top:5%;
 	background: rgba(0, 0, 0, .9);
 	/*opacity: .75;*/
 	border-radius: 5%
@@ -63,7 +79,8 @@ body {
 	position:absolute;
 	/*border:solid black 1px;*/
 	font-size: 60px;
-	/*left:200px;*/
+	left:-15px;
+	top:-3px;
 	font-family: getschwifty;
 	color:#21e6e3;
 	/*border: solid black 1px;*/
@@ -291,3 +308,5 @@ body {
 	z-index: 1;
 }*/
 /*http://jonizaak.deviantart.com/art/Get-Schwifty-A-Rick-and-Morty-font-638073728*/
+/*https://www.youtube.com/watch?v=67KQcBwrNkQ*/
+/*https://www.youtube.com/watch?v=n4Xp6g-_UUw*/

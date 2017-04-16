@@ -28,8 +28,8 @@ $( document ).ready(function() {
 
 
 function makeNewPos(){
-  let h = $('#gameboard').height() - 50;//-70 and -50 so the new vlues dont get too cloade to the border of the gme board
-  let w = $('#gameboard').width() - 130;
+  let h = $('#gameboard').height() - 60;//-70 and -50 so the new vlues dont get too cloade to the border of the gme board
+  let w = $('#gameboard').width() - 142;
   let nh = h * Math.random();
   let nw = w * Math.random();
   return [nw,nh] //returns an array with one array index for each position
@@ -88,7 +88,7 @@ let scoreCounter = $('#scorecounter');// I have a span with the id of score coun
 
 //////Timer////////////////////////////////////////////////////
 
-let startTime = 42; // initial time value
+let startTime = 0; // initial time value
 let timeCounter = $('#timecounter'); // I have a span with the id of timecounter and I set it to the variable timeCounter
 
 	timeCounter.html(startTime);// takes the value in startTime and places it in the span timeCounter 
@@ -136,11 +136,11 @@ let gameBoard = document.getElementById('gameboard') // sets the gameboard div t
 $(gameBoard).click(function(){
 
 	
-	if (scoreValue <=99){
+	if (scoreValue <=400){
 		scoreValue = 0
 		scoreCounter.html(scoreValue)
 	} else {
-		scoreValue -= 100;
+		scoreValue -= 300;
 	scoreCounter.html(scoreValue);
 	finalScore.innerHTML = `YOU SCORED<br /> ${scoreValue} points`;
 	}//end if else
@@ -161,7 +161,7 @@ function createSquare(){
 	// a big problem I had was getting new blocks to spawn in random locations I knew how to set the display  and adjust top and left
 	//to get it in a new position, but with help from Matt I have a way to create random values and use them as the values for the 
 	// top and left position
-	let left = Math.random() * 500;
+	let left = Math.random() * 550;
 	let top = Math.random() * 460;
 	// console.log("left =====> " + left);
 	// console.log("top =====> " + top)
@@ -180,7 +180,7 @@ function createSquare(){
 			finalScore.innerHTML = `YOU SCORED<br />  ${scoreValue} points`; // this is for the endwindow | it takes the score value and places it 
 			// in the innerHTML at the end of the game. It has to be placed in here to send the updated scoreValue to finalScore. if this is 
 			// outside of the eventlistener, it will not show the updated scoreValue but the initial value of scoreValue which is 0.
-
+			goodBye.play();
 
 			createSquare();//the click event is a call back will create the a new square with all of these attributes
 			createSquare();// this is to create a second square
@@ -206,7 +206,8 @@ let button = document.getElementById('start');
 	button.addEventListener('click', function(){
 		startTime = 5;// this is just used to overwrite counter time for testing
 		$('#startwindow').css('display', 'none');// hides start window/startbutton
-	$('#howtoplaywindow').css('display', 'none');
+		$('#howtoplaywindow').css('display', 'none');
+		hello.play(); 
 		createSquare();// creates square 
 		countDown();//starts countdown I put count down in a fucntion to be called so countdown doesnt start when the page loads
 	});
@@ -229,7 +230,7 @@ let reset = document.getElementById('reset');
 
 		$('#startwindow').css('display', 'initial');
 		$('#endwindow').css('display', 'none');// makes end window disappear
-
+		hello.play(); 
 		//end button is reset minus the last 4 lines
 		$('#startwindow').css('display', 'none');
 		startTime = 42;
@@ -252,6 +253,7 @@ let end = document.getElementById('end');
 		$('#timecounter').empty(); //clears timer
 		$('#timecounter').html(42); // sets timer back to 42 otherwise it would be blank on reset and will take a second to appear
 
+		hello.play(); 
 		$('#startwindow').css('display', 'initial');
 		$('#endwindow').css('display', 'none');// makes end window disappear
 	});
@@ -264,7 +266,7 @@ let howToPlay = $('#howtoplaybutton')
 $(howToPlay).on('click', function(){
 	$('#howtoplaywindow').css('display','initial');
 	$('#startwindow').css('display', 'none');
-
+	hello.play(); 
 })
 
 $('#howtoplaywindow').css('display', 'none');
@@ -288,7 +290,7 @@ $(play).on('click', function(){
 
 		$('#startwindow').css('display', 'initial');
 		$('#endwindow').css('display', 'none');// makes end window disappear
-
+		hello.play(); 
 		//end button is reset minus the last 4 lines
 		$('#startwindow').css('display', 'none');
 		startTime = 42;
@@ -309,6 +311,7 @@ $(backButton).on('click', function(){
 		$('#startwindow').css('display', 'initial');
 		$('#endwindow').css('display', 'none');// makes end window disappear
 		$('#howtoplaywindow').css('display', 'none');
+		goodBye.play();
 	});
 
 
@@ -351,6 +354,21 @@ $(hard).click(function(){
 
 });
 
+// PLAY THEME
+$("#music").get(0).play();
+
+
+/// add sound so mrmrseeks
+
+let goodBye = document.createElement('audio');
+goodBye.setAttribute('src','./sounds/goodbye.mp3');
+
+goodBye.play();
+
+
+let hello = document.createElement('audio');
+hello.setAttribute('src','./sounds/hello.mp3');
+// hello.play(); 
 
 
 
