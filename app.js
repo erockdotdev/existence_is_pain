@@ -102,7 +102,7 @@ const gameBoard = document.getElementById('gameboard');
   $(gameBoard).click(function() {
   laser.play();
   // this if statement keeps the score from showing a negative number
-  if (scoreValue <=400) {
+  if (scoreValue <=300) {
 	scoreValue = 0
     scoreCounter.html(scoreValue)
   } else {
