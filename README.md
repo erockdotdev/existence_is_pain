@@ -11,7 +11,7 @@ So in the game the player clicks on a Meeseeks, it dies and more are spawned and
 This continues until the time runs out.
 
 
-#Tech used
+# Tech used
 
 To make this game is used HTML5, CSS3, javaScript and jQuery.
 
@@ -31,7 +31,7 @@ CSS was used for styling and the animation of the background wall paper.
 
 There were a few pieces of code I used from class and some from w3 schools and StackOverflow that are noted in the code.
 
-#Wireframes
+# Wireframes
 [![][./readmepictures/20170411_201623.jpg]]
 
 For 'Square Popper' I loayed out the play for how the game would progress.
@@ -40,7 +40,7 @@ Next they click squares until the time runs out.
 
 I took out the plan to add in additional objects, but kept the plan that if they miss, points will be deducted. 
 
-#User Story
+# User Story
 
 The user story is pretty straight forward. To begin as a user i want the option to start or to see what the games rules are. 
 
@@ -51,13 +51,13 @@ From there, when the game is over I would want to see my total score and have th
 All of these elements are included. 
 
 
-#Instructions
+# Instructions
 
 Click as many Meeseeks as you can before the time runs out.
 
 If you miss you'll loose points.
 
-#Problems Solved
+# Problems Solved
 I had a few big challenges making this work.
 
 The first was having event listeners work on dynamically created elements. I solved that by adding the click event directly to the function that creates the element. 
@@ -67,14 +67,14 @@ The next was posting the score after the time was up. I was getting what the sco
 The last big challenge I has was havign random spawn locations. At first the elements would only come out of the same area after being created, which lead to it being too easy to click on them when they spawned.
 To fix this I had to use Math.random times an appropriate number to het random top and left loactions.
 
-#Unsolved Problems
+# Unsolved Problems
 
 I feel like the elements cluster much more to the right of the game board than the left, so it doesnt feel as scattered or random as I would like. The problem is that when I adjust the width they can spread too, they do fill the rightside, but break out of the bottom of the game board.  I set it as best as I could for the elements to spread out as much as possible without breaking out the bottom, but I feel it could be better.
 
 Also, as of writing this, I have yet to understand how to use classes to maniplate the DOM. Hopfully with the time I have left I'll figure it out.
 
 
-#Time
+# Time
 
 | E.I.P.        | Estimated Time| Actualtime |complete
 | ------------- |:-------------:| ----------:|-----:|
