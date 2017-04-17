@@ -13,9 +13,9 @@ This continues until the time runs out.
 
 # Tech used
 
-To make this game is used HTML5, CSS3, javaScript and jQuery.
+To make this game I used HTML5, CSS3, javaScript and jQuery.
 
-In HTML i set up divs to be styled for the gameboard, including the timer, scorekeeper and buttons to transverse the menus.
+In HTML I set up divs to be styled for the gameboard, including the timer, scorekeeper and buttons to transverse the menus.
 
 I used javaScript to: 
 	- append div elements as the clickable Meeseeks. 
@@ -25,30 +25,30 @@ I used javaScript to:
 
 I used jQuery to:
 	- Set a fade in for the whole game when the window loads
-	- to clear children of a div. This was vital to the reset functions to play a new game without refreshing the browser.
+	- To clear children of a div. This was vital to the reset functions in order to play a new game without refreshing the browser.
 
 CSS was used for styling and the animation of the background wall paper.
 
 There were a few pieces of code I used from class and some from w3 schools and StackOverflow that are noted in the code.
 
 # Wireframes
-[![][./readmepictures/20170411_201623.jpg]]
+[![][./readmepictures/20170411_201623.jpg]];
 
-For 'Square Popper' I loayed out the play for how the game would progress.
-.
-Next they click squares until the time runs out.
+For 'Square Popper' I layed out the plan for how the game would progress.
+
+They click squares and score until the time runs out.
 
 I took out the plan to add in additional objects, but kept the plan that if they miss, points will be deducted. 
 
 # User Story
 
-The user story is pretty straight forward. To begin as a user i want the option to start or to see what the games rules are. 
+To begin as a user iIwant the option to start or to see what the games rules are. 
 
-If I go to rules I want to see the rules, go back to start or beable to play from right there. I also thought a user was unfamiliar with 'Rick and Morty' they would want to know what Meseek is and why would it want to die. For that reason I provided a link on the top of the instruction to a Youtube video that would get the point across.
+If I go to rules I want to see the rules, go back to start or be able to play from right there. I also thought if a user was unfamiliar with 'Rick and Morty' they would want to know what Meseek is and why would it want to die. For that reason I provided a link on the top of the instructions to a Youtube video that would explain.
 
-From there, when the game is over I would want to see my total score and have the option to play again or quit.
+From there I want to play. When the game is over I would want to see my total score and have the option to play again or quit.
 
-All of these elements are included. 
+All of these elements are included in the final version. 
 
 
 # Instructions
@@ -62,16 +62,15 @@ I had a few big challenges making this work.
 
 The first was having event listeners work on dynamically created elements. I solved that by adding the click event directly to the function that creates the element. 
 
-The next was posting the score after the time was up. I was getting what the score was set to, but not to what it changed to at the end of the game. In order to fix that i had to set the innerhtml of the div that shows the score from within the function that added to the score.
+The next was posting the score after the time was up. I was getting what the score was set to, but not to what it changed to at the end of the game. In order to fix that I had to set the inner html of the div that shows the score from within the function that added to the score.
 
-The last big challenge I has was havign random spawn locations. At first the elements would only come out of the same area after being created, which lead to it being too easy to click on them when they spawned.
-To fix this I had to use Math.random times an appropriate number to het random top and left loactions.
+The last big challenge I has was having random spawn locations. At first the elements would only come out of the same area after being created, which lead to it being too easy to click on them when they spawned.
+To fix this I had to use Math.random times an appropriate number to get random top and left loactions.
 
 # Unsolved Problems
 
-I feel like the elements cluster much more to the right of the game board than the left, so it doesnt feel as scattered or random as I would like. The problem is that when I adjust the width they can spread too, they do fill the rightside, but break out of the bottom of the game board.  I set it as best as I could for the elements to spread out as much as possible without breaking out the bottom, but I feel it could be better.
+I feel like the elements cluster much more to the right of the game board than the left, so it doesn't feel as scattered or random as I would like. The problem is that when I adjust the width they can spread too, they do fill the rightside, but break out of the bottom of the game board.  I set it as best as I could for the elements to spread out as much as possible without breaking out the bottom, but I feel it could be better.
 
-Also, as of writing this, I have yet to understand how to use classes to maniplate the DOM. Hopfully with the time I have left I'll figure it out.
 
 
 # Time
