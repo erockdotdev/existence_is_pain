@@ -406,6 +406,36 @@ let laser = document.createElement('audio');
 
 //END///////////////////////////////////////////////////////////
 
+class Attempt {
+	constructor(name , sentence){
+		this.name = name;
+		this.sentence = sentence;
+	}
+}
+
+let x = new Attempt('Eric', 'This probably won\'t count even if it works' )
+// but it does work if I console log x!
+console.log(x)
+
+/////////////////////////////////////////////////////////////
+
+// class Footer {
+// 	constructor(){
+// 		this.url = './images/Mr._Meeseeks_Box.png';
+// 		;
+// 	}
+// }
+
+// let footer = new Footer();
+// document.body.appendChild(footer)
+
+// console.log(footer)
+
+//this..this does not work
+
+
+
+
 });// End jquery
 
 
