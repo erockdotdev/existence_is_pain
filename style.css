@@ -7,7 +7,7 @@ src: url('./font/getschwifty.ttf');
 }
 @font-face{
 	font-family:SFDigitalReadout-Light;
-	src: url('./font/SFDigitalReadout-Light');
+	src: url('./font/SFDigitalReadout-Light.tff');
 }
 
 #rules a{
