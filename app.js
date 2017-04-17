@@ -7,8 +7,6 @@ $('#fade').fadeIn(1000);
 
 
 //////Random Movement and Speed////////////////////////////////
-
-
 /* this was used from the animate lab we did with joe
 this takes the gameboard height and width and adds math.random to create new values for height and width 
 this is done to give random values to animate div */
@@ -178,153 +176,185 @@ function createSquare(){
 ////////////////////////////////////////////////////////////////
 
 
+//BUTTONS//////////////////////////////////////////////////////
+
+
 ///////////startbutton/////////////////////////
 
+// Start the Game
 let button = document.getElementById('start');
+button.addEventListener('click', function() {
+  // Setting the startTime here can be used overwrite startTime for testing
+  startTime = 5;
 
+  // Hides start window and all its children
+  $('#startwindow').css('display', 'none');
+  // hides How to Play and its children
+  $('#howtoplaywindow').css('display', 'none');
+  // Play sound on click
+  hello.play(); 
+  // Creates initial mr meseek
+  createSquare();
+  // Starts timer I put timer in a fucntion to be called so countdown doesn't start when the page loads
+  countDown();
+  });
 	
-
-	button.addEventListener('click', function(){
-		startTime = 42;// this is just used to overwrite counter time for testing
-		$('#startwindow').css('display', 'none');// hides start window/startbutton
-		$('#howtoplaywindow').css('display', 'none');
-		startTime = 42;
-		hello.play(); 
-		createSquare();// creates square 
-		countDown();//starts countdown I put count down in a fucntion to be called so countdown doesnt start when the page loads
-	});
-	
-////////////End Start Button/////////////////////////
+////////////End Start Button////////////////////////////////////
+////////////////////////////////////////////////////////////////
 
 
 //////Reset Button/////////////////////////////
+// Clears elemets and gives back original values
 
 let reset = document.getElementById('reset');
 
-	reset.addEventListener('click', function(){
-		$('#gameboard').empty();//clears gameboard
-		
-		$('#scorecounter').empty();// clears scorecounter
-		$('#scorecounter').html(0);// sets countervalue to 0 otherwise on reset it would be blank on reset
-
-		$('#timecounter').empty(); //clears timer
-		$('#timecounter').html(42); // sets timer back to 42 otherwise it would be blank on reset and will take a second to appear
-
-		$('#startwindow').css('display', 'initial');
-		$('#endwindow').css('display', 'none');// makes end window disappear
-		hello.play(); 
-		//end button is reset minus the last 4 lines
-		$('#startwindow').css('display', 'none');
-		startTime = 42;
-		scoreValue = 0;
-		createSquare();
-		countDown();
-	});
-/////////////////END RESET/////////////////////
+reset.addEventListener('click', function() {
+  //clears gameboard
+  $('#gameboard').empty();
+  // clears scorecounter
+  $('#scorecounter').empty();
+  // Sets countervalue to 0 otherwise on reset it would be blank on reset
+  $('#scorecounter').html(0);
+  // Clears timer
+  $('#timecounter').empty(); 
+  // Sets timer back to 42 otherwise it would be blank on reset and will take a second to appear
+  $('#timecounter').html(42); 
+  // Shows start window
+  $('#startwindow').css('display', 'initial');
+  // makes end window disappear
+  $('#endwindow').css('display', 'none');
+  // Play sond on click
+  hello.play(); 
+  // Makes startwindow dissappear: I need to check if there was a reason why I set it then remove it in this button
+  $('#startwindow').css('display', 'none');
+  // Resets time: again, I have to check if there is a reason why i have this set after setting it above
+  startTime = 42;
+  scoreValue = 0;
+  // Start the game
+  createSquare();
+  countDown();
+  });
+/////////////////END RESET//////////////////////////////////////
+////////////////////////////////////////////////////////////////
 
 
 //////////END BUTTON////////////////////////////
 let end = document.getElementById('end');
 
-	end.addEventListener('click', function(){
-		$('#gameboard').empty();//clears gameboard/ found this jquery code. it clears all children of a parent
-		
-		$('#scorecounter').empty();// clears scorecounter
-		$('#scorecounter').html(0);// sets countervalue to 0 otherwise on reset it would be blank on reset
+end.addEventListener('click', function() {
+  // Clears gameboard - found this jquery code. it clears all children of a parent.
+  $('#gameboard').empty();
+  // Clears scorecounter
+  $('#scorecounter').empty();
+  // Sets countervalue to 0 otherwise on reset it would be blank on reset 
+  $('#scorecounter').html(0);
+  // Clears timer
+  $('#timecounter').empty(); 
+  // Sets timer back to 42 otherwise it would be blank on reset and will take a second to appear
+  $('#timecounter').html(42);
+  // Plays sound on click
+  meeseeks.play();
+  // Plays sound on click
+  hello.play(); 
+  // Shows startwindow again
+  $('#startwindow').css('display', 'initial');
+  // Makes end window disappear
+  $('#endwindow').css('display', 'none');// makes end window disappear
+  });
 
-		$('#timecounter').empty(); //clears timer
-		$('#timecounter').html(42); // sets timer back to 42 otherwise it would be blank on reset and will take a second to appear
-		meeseeks.play();
-		hello.play(); 
-		$('#startwindow').css('display', 'initial');
-		$('#endwindow').css('display', 'none');// makes end window disappear
-	});
-
-///////////////END END BUTTON///////////////////////////
+///////////////END END BUTTON///////////////////////////////////
+////////////////////////////////////////////////////////////////
 
 ///////////////HOW TO PLAY BUTTON - in start menu/////
 let howToPlay = $('#howtoplaybutton')
-
-$(howToPlay).on('click', function(){
-	$('#howtoplaywindow').css('display','initial');
-	$('#startwindow').css('display', 'none');
-	hello.play(); 
-})
-
+// Brings to how to play window
+$(howToPlay).on('click', function() {
+  // How to Play window comes up
+  $('#howtoplaywindow').css('display','initial');
+  // Starwindow disapears
+  $('#startwindow').css('display', 'none');
+  // play sound
+  hello.play(); 
+  });
+// How to play is initialy set to none so it doesnt show up  when the page loads
 $('#howtoplaywindow').css('display', 'none');
 
-/////////////////////////////////////
+////////////////////End HOW TO PLAY BUTTON//////////////////////
+////////////////////////////////////////////////////////////////
 
-/////play button - how to play window/////////
+
+
+/////PLAY button - how to play window/////////
 
 let play = $('#play');
 
-$(play).on('click', function(){
-	$('#howtoplaywindow').css('display', 'none');
-	$('#startwindow').css('display', 'none');// hides start window/startbutton
-	$('#gameboard').empty();//clears gameboard
-		
-		$('#scorecounter').empty();// clears scorecounter
-		$('#scorecounter').html(0);// sets countervalue to 0 otherwise on reset it would be blank on reset
+$(play).on('click', function() {
+  $('#howtoplaywindow').css('display', 'none');
+  // hides start window/startbutton
+  $('#startwindow').css('display', 'none');
+  // Clears gameboard
+  $('#gameboard').empty();
+  // Clears scorecounter
+  $('#scorecounter').empty();
+  // Sets countervalue to 0 otherwise on reset it would be blank on reset
+  $('#scorecounter').html(0);
+  // Clears timer
+  $('#timecounter').empty(); 
+  // Sets timer back to 42 otherwise it would be blank on reset and will take a second to appear
+  $('#timecounter').html(42); 
 
-		$('#timecounter').empty(); //clears timer
-		$('#timecounter').html(42); // sets timer back to 42 otherwise it would be blank on reset and will take a second to appear
+  $('#startwindow').css('display', 'initial');
+  // Makes end window disappear
+  $('#endwindow').css('display', 'none');
+  // play sound
+  hello.play(); 
 
-		$('#startwindow').css('display', 'initial');
-		$('#endwindow').css('display', 'none');// makes end window disappear
-		hello.play(); 
-		//end button is reset minus the last 4 lines
-		$('#startwindow').css('display', 'none');
-		startTime = 42;
-		scoreValue = 0;
+  $('#startwindow').css('display', 'none');
+  startTime = 42;
+  scoreValue = 0;
 
+  createSquare();
+  countDown()
 
+  });
+///////////END PLAYbutton///////////////////////////////////////
+////////////////////////////////////////////////////////////////
 
+///////////BACK button//////////////////////////////////////////
 
-		createSquare();// creates square 
-		countDown()
-
-})
-///////////END play button///////////
-
+// This button had porperities that i think are self explanitory after reading the previous buttons
 let backButton = $('#back');
 
 $(backButton).on('click', function(){
-		$('#startwindow').css('display', 'initial');
-		$('#endwindow').css('display', 'none');// makes end window disappear
-		$('#howtoplaywindow').css('display', 'none');
-		goodBye.play();
+  $('#startwindow').css('display', 'initial');
+  // makes end window disappear
+  $('#endwindow').css('display', 'none');
+  $('#howtoplaywindow').css('display', 'none');
+  goodBye.play();
 	});
 
 
 
 
-
-
-
-
-
-
-
-
-
-
+/////////////END OF BUTTONS/////////////////////////////////////
+////////////////////////////////////////////////////////////////
 
 
 
 ///////////////END WINDOW FINAL SCORE///////
-//after timer runsout this window appears. it displays the finalscore(pulled from that event listener) and the reset and end buttons
+// After timer runsout this window appears. It displays the finalscore and the reset and end buttons.
 
 let endWindow = document.getElementById('endwindow');
 let finalScore = document.createElement('h1');
+  endWindow.appendChild(finalScore);
 
-	endWindow.appendChild(finalScore)
 
-
-///////////////////////////////
+////////////////////////////////////////////////////////////////
 
 /////DO NOT DELETE the following code 
-
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
 let hard = $('#hard');
 $(hard).click(function(){
 
@@ -335,48 +365,48 @@ $(hard).click(function(){
 //it is connected to nothing, but if i delete it game wont start
 
 });
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+
+
 
 
 //SOUNDS/////////////////
-// PLAY THEME
+
+
+// This is where I set the audio files for the event listeners;
+
+// PLAY THEME I found the jQuery code to auto play music
 $("#music").get(0).play();
-
-
-/// add sound so mrmrseeks
-
+////////////////////////////////////////////////////////////////
 let goodBye = document.createElement('audio');
-goodBye.setAttribute('src','./sounds/goodbye.mp3');
+  goodBye.setAttribute('src','./sounds/goodbye.mp3');
 
-goodBye.play();
-
+  goodBye.play();
+////////////////////////////////////////////////////////////////
 
 let hello = document.createElement('audio');
-hello.setAttribute('src','./sounds/hello.mp3');
+  hello.setAttribute('src','./sounds/hello.mp3');
 // hello.play(); 
-
+////////////////////////////////////////////////////////////////
 let meeseeks = document.createElement('audio');
-meeseeks.setAttribute('src','./sounds/lookatme.mp3');
-meeseeks.play();
-
+  meeseeks.setAttribute('src','./sounds/lookatme.mp3');
+  meeseeks.play();
+////////////////////////////////////////////////////////////////
 let laser = document.createElement('audio');
-laser.setAttribute('src','./sounds/Laser2.mp3');
+  laser.setAttribute('src','./sounds/Laser2.mp3');
 
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
 
+//END///////////////////////////////////////////////////////////
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-});//end jquery
+});// End jquery
 
 
 
