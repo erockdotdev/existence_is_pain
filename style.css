@@ -13,7 +13,6 @@ src: url('./font/getschwifty.ttf');
 #rules a{
 	text-decoration: none;
 	font-size:25px;
-
 }
 
 #rules{
@@ -25,16 +24,17 @@ src: url('./font/getschwifty.ttf');
 	text-decoration: none;
 	line-height: 50px;
 	font-size:20px;
-
 }
+
 body {
 	background:#1b1b1b;
 }
+
 #fade{
 	display:none;
 	padding:0;
-
 }
+
 #meseeks{
 	position:relative;
 	display:initial;
@@ -63,11 +63,7 @@ body {
 	animation-iteration-count: infinite;
     animation-direction: alternate;
     animation-timing-function: linear;
-
 }
-
-
-
 
 #gamecontainer{
 	position:absolute;
@@ -79,7 +75,6 @@ body {
 	background: rgba(0, 0, 0, .9);
 	/*opacity: .75;*/
 	border-radius: 5%
-
 }
 
 #title{
@@ -123,7 +118,6 @@ body {
 
 }
 
-
 #gameboard{
 	position: absolute;
 	left: 0%;
@@ -137,7 +131,6 @@ body {
 
 }
 
-
 .block{
 	position:absolute;
 	height:50px;
@@ -150,6 +143,7 @@ body {
 	background-position: center;
 	/*z-index:5;*/
 }
+
 .block:hover{
 	border:solid yellow 5px;
 	background: blue;
@@ -294,7 +288,6 @@ body {
 	border-radius: 5px;
 	color:white;
 	background:rgba(0, 0, 0, .8);
-
 }
 
 
@@ -323,6 +316,10 @@ body {
 }
 
 
+
+/*fontface, some of the animation codes, text shadow, and user select codes were found on w3schools and stack overflow
+fonts, audio and images were from google searches
+some links are below*/
 
 /*http://jonizaak.deviantart.com/art/Get-Schwifty-A-Rick-and-Morty-font-638073728*/
 /*https://www.youtube.com/watch?v=67KQcBwrNkQ*/

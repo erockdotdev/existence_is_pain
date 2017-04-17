@@ -185,7 +185,7 @@ function createSquare(){
 let button = document.getElementById('start');
 button.addEventListener('click', function() {
   // Setting the startTime here can be used overwrite startTime for testing
-  startTime = 5;
+  startTime = 42;
 
   // Hides start window and all its children
   $('#startwindow').css('display', 'none');
@@ -284,7 +284,7 @@ $('#howtoplaywindow').css('display', 'none');
 
 
 
-/////PLAY button - how to play window/////////
+/////PLAY button - how to play window(not the same as start button)/////////
 
 let play = $('#play');
 
